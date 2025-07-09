@@ -1,19 +1,19 @@
 <template>
-  <tbody :class="[tableStyleClasses.getBodyClass(), className]">
-    <slot />
-  </tbody>
+	<tbody :class="[tableStyleClasses.getBodyClass(), className]">
+		<slot />
+	</tbody>
 </template>
 
 <script setup lang="ts">
-import { useTableStyleClasses } from "./useTableStyles";
+import { useTableStyleClasses } from "./useTableStyles"
 
 interface TableBodyInterface {
-  className?: string;
+	className?: string
 }
 
 withDefaults(defineProps<TableBodyInterface>(), {
-  className: "",
-});
+	className: "",
+})
 
-const tableStyleClasses = useTableStyleClasses();
+const tableStyleClasses = useTableStyleClasses()
 </script>

@@ -1,4 +1,4 @@
-# Vue Table Components
+# FooTable Components
 
 This is a Vue 3 conversion of the React table components with enhanced accessibility, centralized styling system, and full support for `colspan` and `rowspan` attributes. **SonarQube compliant** - resolves Web:S5256 warning about missing table headers.
 
@@ -15,7 +15,7 @@ This is a Vue 3 conversion of the React table components with enhanced accessibi
 
 ### Basic Components
 
-- `Table.vue` - Main table wrapper with accessibility features
+- `FooTable.vue` - Main table wrapper with accessibility features
 - `TableHead.vue` - Semantic table header with proper roles
 - `TableBody.vue` - Table body wrapper
 - `TableRow.vue` - Table row with variant support
@@ -40,24 +40,30 @@ This is a Vue 3 conversion of the React table components with enhanced accessibi
 
 ```vue
 <template>
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableColumn variant="head">Name</TableColumn>
-        <TableColumn variant="head">Email</TableColumn>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow v-for="user in users" :key="user.id" variant="hover">
-        <TableColumn>{{ user.name }}</TableColumn>
-        <TableColumn>{{ user.email }}</TableColumn>
-      </TableRow>
-    </TableBody>
-  </Table>
+	<FooTable>
+		<TableHead>
+			<TableRow>
+				<TableColumn variant="head">Name</TableColumn>
+				<TableColumn variant="head">Email</TableColumn>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow v-for="user in users" :key="user.id" variant="hover">
+				<TableColumn>{{ user.name }}</TableColumn>
+				<TableColumn>{{ user.email }}</TableColumn>
+			</TableRow>
+		</TableBody>
+	</FooTable>
 </template>
 
 <script setup>
-import { Table, TableHead, TableBody, TableRow, TableColumn } from "./VueTable";
+import {
+	FooTable,
+	TableHead,
+	TableBody,
+	TableRow,
+	TableColumn,
+} from "./FooTable"
 </script>
 ```
 
@@ -65,20 +71,20 @@ import { Table, TableHead, TableBody, TableRow, TableColumn } from "./VueTable";
 
 ```vue
 <template>
-  <div>
-    <!-- Your tables will use the custom theme -->
-    <Table>
-      <!-- table content -->
-    </Table>
-  </div>
+	<div>
+		<!-- Your tables will use the custom theme -->
+		<FooTable>
+			<!-- table content -->
+		</FooTable>
+	</div>
 </template>
 
 <script setup>
-import { provideTableStyles } from "./VueTable/useTableStyles";
-import { modernTableStyles } from "./VueTable/tableStyles";
+import { provideTableStyles } from "./VueTable/useTableStyles"
+import { modernTableStyles } from "./VueTable/tableStyles"
 
 // Provide custom styling for all child table components
-provideTableStyles(modernTableStyles);
+provideTableStyles(modernTableStyles)
 </script>
 ```
 
@@ -86,35 +92,35 @@ provideTableStyles(modernTableStyles);
 
 ```typescript
 import {
-  defaultTableStyles, // Standard gray theme
-  modernTableStyles, // Slate-based modern theme
-  compactTableStyles, // Compact spacing theme
-} from "./VueTable/tableStyles";
+	defaultTableStyles, // Standard gray theme
+	modernTableStyles, // Slate-based modern theme
+	compactTableStyles, // Compact spacing theme
+} from "./VueTable/tableStyles"
 ```
 
 ### Creating Custom Themes
 
 ```typescript
-import { createTableStyles } from "./VueTable/tableStyles";
+import { createTableStyles } from "./VueTable/tableStyles"
 
 const myCustomTheme = createTableStyles({
-  table: {
-    base: "w-full text-sm border-2 border-blue-500",
-  },
-  head: {
-    base: "bg-blue-100 text-blue-900 font-bold",
-  },
-  row: {
-    hover: "hover:bg-blue-50 transition-colors",
-  },
-});
+	table: {
+		base: "w-full text-sm border-2 border-blue-500",
+	},
+	head: {
+		base: "bg-blue-100 text-blue-900 font-bold",
+	},
+	row: {
+		hover: "hover:bg-blue-50 transition-colors",
+	},
+})
 ```
 
 ## 🔧 SonarQube Compliance
 
 ### Problem Resolved
 
-The SonarQube warning **"Add `<th>` headers to this `<table>`"** (Web:S5256) is now resolved.
+The SonarQube warning **"Add `<th>` headers to this `<Footable>`"** (Web:S5256) is now resolved.
 
 ### What We Fixed
 
@@ -127,15 +133,15 @@ The SonarQube warning **"Add `<th>` headers to this `<table>`"** (Web:S5256) is 
 ### Before (SonarQube Warning)
 
 ```html
-<table>
-  <tbody>
-    <tr>
-      <td>Name</td>
-      <!-- ❌ Should be <th> -->
-      <td>Email</td>
-    </tr>
-  </tbody>
-</table>
+<Footable>
+	<tbody>
+		<tr>
+			<td>Name</td>
+			<!-- ❌ Should be <th> -->
+			<td>Email</td>
+		</tr>
+	</tbody>
+</Footable>
 ```
 
 ### After (SonarQube Compliant)
@@ -152,7 +158,7 @@ The SonarQube warning **"Add `<th>` headers to this `<table>`"** (Web:S5256) is 
   <tbody role="rowgroup">
     <!-- data rows -->
   </tbody>
-</table>
+</Footable>
 ```
 
 ## 📋 Usage Examples
@@ -176,7 +182,7 @@ The SonarQube warning **"Add `<th>` headers to this `<table>`"** (Web:S5256) is 
         <TableColumn>{{ emp.department }}</TableColumn>
       </TableRow>
     </TableBody>
-  </Table>
+  </FooTable>
 </template>
 ```
 
@@ -184,28 +190,28 @@ The SonarQube warning **"Add `<th>` headers to this `<table>`"** (Web:S5256) is 
 
 ```vue
 <template>
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableColumn variant="head">Name</TableColumn>
-        <TableColumn variant="head" :col-span="2"
-          >Contact Information</TableColumn
-        >
-      </TableRow>
-      <TableRow>
-        <TableColumn variant="head">Full Name</TableColumn>
-        <TableColumn variant="head">Email</TableColumn>
-        <TableColumn variant="head">Phone</TableColumn>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow variant="hover">
-        <TableColumn>John Doe</TableColumn>
-        <TableColumn>john@example.com</TableColumn>
-        <TableColumn>555-0123</TableColumn>
-      </TableRow>
-    </TableBody>
-  </Table>
+	<FooTable>
+		<TableHead>
+			<TableRow>
+				<TableColumn variant="head">Name</TableColumn>
+				<TableColumn variant="head" :col-span="2"
+					>Contact Information</TableColumn
+				>
+			</TableRow>
+			<TableRow>
+				<TableColumn variant="head">Full Name</TableColumn>
+				<TableColumn variant="head">Email</TableColumn>
+				<TableColumn variant="head">Phone</TableColumn>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow variant="hover">
+				<TableColumn>John Doe</TableColumn>
+				<TableColumn>john@example.com</TableColumn>
+				<TableColumn>555-0123</TableColumn>
+			</TableRow>
+		</TableBody>
+	</FooTable>
 </template>
 ```
 
@@ -213,30 +219,30 @@ The SonarQube warning **"Add `<th>` headers to this `<table>`"** (Web:S5256) is 
 
 ```vue
 <template>
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableColumn variant="head">Department</TableColumn>
-        <TableColumn variant="head">Employee</TableColumn>
-        <TableColumn variant="head">Position</TableColumn>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow variant="hover">
-        <TableColumn :row-span="3">Engineering</TableColumn>
-        <TableColumn>John Doe</TableColumn>
-        <TableColumn>Senior Developer</TableColumn>
-      </TableRow>
-      <TableRow variant="hover">
-        <TableColumn>Jane Smith</TableColumn>
-        <TableColumn>Frontend Developer</TableColumn>
-      </TableRow>
-      <TableRow variant="hover">
-        <TableColumn>Bob Johnson</TableColumn>
-        <TableColumn>DevOps Engineer</TableColumn>
-      </TableRow>
-    </TableBody>
-  </Table>
+	<FooTable>
+		<TableHead>
+			<TableRow>
+				<TableColumn variant="head">Department</TableColumn>
+				<TableColumn variant="head">Employee</TableColumn>
+				<TableColumn variant="head">Position</TableColumn>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow variant="hover">
+				<TableColumn :row-span="3">Engineering</TableColumn>
+				<TableColumn>John Doe</TableColumn>
+				<TableColumn>Senior Developer</TableColumn>
+			</TableRow>
+			<TableRow variant="hover">
+				<TableColumn>Jane Smith</TableColumn>
+				<TableColumn>Frontend Developer</TableColumn>
+			</TableRow>
+			<TableRow variant="hover">
+				<TableColumn>Bob Johnson</TableColumn>
+				<TableColumn>DevOps Engineer</TableColumn>
+			</TableRow>
+		</TableBody>
+	</FooTable>
 </template>
 ```
 
@@ -244,28 +250,34 @@ The SonarQube warning **"Add `<th>` headers to this `<table>`"** (Web:S5256) is 
 
 ```vue
 <template>
-  <CompactTable
-    :columns="columns"
-    :data="data"
-    :pagination="paginationOptions"
-    :loading="loading"
-    aria-label="User management table"
-  />
+	<CompactTable
+		:columns="columns"
+		:data="data"
+		:pagination="paginationOptions"
+		:loading="loading"
+		aria-label="User management table"
+	/>
 </template>
 
 <script setup>
-import { CompactTable } from "./VueTable";
+import { CompactTable } from "./VueTable"
 
 const columns = [
-  { id: "name", label: "Name", sortable: true, ordering: 1 },
-  { id: "email", label: "Email", sortable: true, ordering: 2, align: "left" },
-  { id: "role", label: "Role", sortable: false, ordering: 3, align: "center" },
-];
+	{ id: "name", label: "Name", sortable: true, ordering: 1 },
+	{ id: "email", label: "Email", sortable: true, ordering: 2, align: "left" },
+	{
+		id: "role",
+		label: "Role",
+		sortable: false,
+		ordering: 3,
+		align: "center",
+	},
+]
 
 const data = [
-  { name: "John Doe", email: "john@example.com", role: "Admin" },
-  { name: "Jane Smith", email: "jane@example.com", role: "User" },
-];
+	{ name: "John Doe", email: "john@example.com", role: "Admin" },
+	{ name: "Jane Smith", email: "jane@example.com", role: "User" },
+]
 </script>
 ```
 
@@ -296,13 +308,13 @@ const data = [
 
 ```typescript
 interface ColumnInterface {
-  label: string;
-  id: string;
-  sortable?: boolean;
-  ordering?: number;
-  colSpan?: number;
-  rowSpan?: number;
-  align?: AlignmentType;
+	label: string
+	id: string
+	sortable?: boolean
+	ordering?: number
+	colSpan?: number
+	rowSpan?: number
+	align?: AlignmentType
 }
 ```
 

@@ -1,28 +1,52 @@
 {
-  "name": "footable",
-  "private": true,
-  "author": "Rijal Permana <rijalpermana00@gmail.com>",
-  "version": "0.0.1",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview",
-    "prepare": "husky"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.11",
-    "vue": "^3.5.17"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.0",
-    "@vue/tsconfig": "^0.7.0",
-    "autoprefixer": "^10.4.21",
-    "git-format-staged": "^3.1.1",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11",
-    "typescript": "~5.8.3",
-    "vite": "^7.0.3",
-    "vue-tsc": "^2.2.12"
-  }
+	"name": "rijal-footable",
+	"description": "making tables not war",
+	"author": "Rijal Permana <rijalpermana00@gmail.com>",
+	"version": "0.0.1",
+	"license": "MIT",
+	"keywords": [
+		"vue",
+		"component",
+		"tailwind",
+		"table"
+	],
+	"main": "dist/footable.umd.js",
+	"module": "dist/footable.es.js",
+	"files": [
+		"dist"
+	],
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/footable.es.js",
+			"require": "./dist/footable.umd.js"
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rijalpermana00/footable"
+	},
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build && vue-tsc --project tsconfig.build.json",
+		"preview": "vite preview",
+		"prepare": "husky"
+	},
+	"peerDependencies": {
+		"vue": "^3.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "^24.0.12",
+		"@vitejs/plugin-vue": "^6.0.0",
+		"@vue/tsconfig": "^0.7.0",
+		"autoprefixer": "^10.4.21",
+		"git-format-staged": "^3.1.1",
+		"husky": "^9.1.7",
+		"postcss": "^8.5.6",
+		"tailwindcss": "^4.1.11",
+		"typescript": "~5.8.3",
+		"vite": "^7.0.3",
+		"vue-tsc": "^2.2.12"
+	}
 }
