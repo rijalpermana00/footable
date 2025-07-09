@@ -359,46 +359,6 @@ const paginationOptions = ref({
   serverSide: false,
 });
 
-// Features list
-const features = ref([
-  {
-    icon: "🎨",
-    title: "Beautiful Themes",
-    description:
-      "Multiple professionally designed themes including glassmorphism, vibrant colors, and modern aesthetics.",
-  },
-  {
-    icon: "♿",
-    title: "Accessibility First",
-    description:
-      "Full ARIA support, keyboard navigation, and screen reader compatibility built into every theme.",
-  },
-  {
-    icon: "🔧",
-    title: "Easy Customization",
-    description:
-      "Centralized styling system allows for easy theme switching and custom style creation.",
-  },
-  {
-    icon: "📱",
-    title: "Responsive Design",
-    description:
-      "All themes are fully responsive and work beautifully on desktop, tablet, and mobile devices.",
-  },
-  {
-    icon: "⚡",
-    title: "Performance Optimized",
-    description:
-      "Lightweight CSS with smooth transitions and animations that don't compromise performance.",
-  },
-  {
-    icon: "🌙",
-    title: "Dark Mode Support",
-    description:
-      "Every theme includes comprehensive dark mode support with automatic color adaptation.",
-  },
-]);
-
 // Sorting functionality
 const sortDirection = ref<"asc" | "desc">("asc");
 const isLoading = ref(false);

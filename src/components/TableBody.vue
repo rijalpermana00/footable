@@ -11,7 +11,7 @@ interface TableBodyInterface {
   className?: string;
 }
 
-const props = withDefaults(defineProps<TableBodyInterface>(), {
+withDefaults(defineProps<TableBodyInterface>(), {
   className: "",
 });
 
