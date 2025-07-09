@@ -1,10 +1,9 @@
 # FooTable Components
 
-This is a Vue 3 conversion of the React table components with enhanced accessibility, centralized styling system, and full support for `colspan` and `rowspan` attributes. **SonarQube compliant** - resolves Web:S5256 warning about missing table headers.
+This is a Vue 3 conversion of the React table components with enhanced accessibility, centralized styling system, and full support for `colspan` and `rowspan` attributes.
 
 ## 🚀 Key Features
 
-- ✅ **SonarQube Compliant**: Resolves Web:S5256 warning with proper `<th>` headers
 - ✅ **Accessibility First**: Full ARIA support, keyboard navigation, screen reader friendly
 - ✅ **Centralized Styling**: Configurable theme system with TypeScript support
 - ✅ **Colspan/Rowspan**: Full support for complex table layouts
